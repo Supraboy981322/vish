@@ -122,12 +122,13 @@ type ExecHandlerFunc func(ctx context.Context, args []string) error
 // because Go doesn't currently support sending Interrupt on Windows.
 // [Runner] defaults to a killTimeout of 2 seconds.
 // TODO: integrate with virtual filesystem
+//   TODO: cleanup (remove commented code)
 func DefaultExecHandler(killTimeout time.Duration) ExecHandlerFunc {
 	return func(ctx context.Context, args []string) error {
 		hc := HandlerCtx(ctx)
 		//_, err := LookPathDir(hc.Dir, hc.Env, args[0])
 		//if err != nil {
-		err := fmt.Errorf("%q: executable file not found in $PATH", args[0]) // NOTE: temporary
+			err := fmt.Errorf("%q: executable file not found in $PATH", args[0]) // NOTE: temporary
 			fmt.Fprintln(hc.Stderr, err)
 			return ExitStatus(127)
 		//}
