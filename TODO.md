@@ -3,6 +3,7 @@
 - [ ] options
     - [ ] disabling the builtin commands entirely
 - [ ] loading commands from files on a virtual filesystem
-- [ ] remove checking for commands on host system
+- [x] remove checking for commands on host system
 - [ ] virtual filesystem (may take a while, there's a lot here that's tied to the host's fs) 
 - [ ] isolate from host fs (mostly)
+- [ ] (mostly) custom (built-in) commands for standard Unix utilities specifically for virtual fs
