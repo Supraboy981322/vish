@@ -1,3 +1,7 @@
+>[!NOTICE]
+>This README hasn't been updated yet from the original [mvdan/sh](https://github.com/mvdan/sh/) repository
+>I do plan to update it, but it may take a while as I am still in university, and time can be limited 
+
 # sh
 
 [![Go Reference](https://pkg.go.dev/badge/mvdan.cc/sh/v3.svg)](https://pkg.go.dev/mvdan.cc/sh/v3)
