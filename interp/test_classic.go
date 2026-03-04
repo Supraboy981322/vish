@@ -6,7 +6,7 @@ package interp
 import (
 	"fmt"
 
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 const illegalTok = 0

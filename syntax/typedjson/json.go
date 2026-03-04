@@ -22,7 +22,7 @@ import (
 	"io"
 	"reflect"
 
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 // Encode is a shortcut for [EncodeOptions.Encode] with the default options.

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 func parseWord(t *testing.T, src string) *syntax.Word {

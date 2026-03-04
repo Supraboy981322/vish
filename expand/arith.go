@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 // TODO(v4): the arithmetic APIs should return int64 for portability with 32-bit systems,

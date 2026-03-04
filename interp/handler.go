@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	"mvdan.cc/sh/v3/expand"
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/expand"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 // HandlerCtx returns the [HandlerContext] value stored in ctx,

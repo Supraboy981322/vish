@@ -20,8 +20,8 @@ import (
 	"testing"
 	"time"
 
-	"mvdan.cc/sh/v3/interp"
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/interp"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 func blocklistOneExec(name string) func(interp.ExecHandlerFunc) interp.ExecHandlerFunc {

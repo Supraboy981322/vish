@@ -15,8 +15,8 @@ import (
 	"strconv"
 	"strings"
 
-	"mvdan.cc/sh/v3/expand"
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/expand"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 func newOverlayEnviron(parent expand.Environ, background bool) *overlayEnviron {

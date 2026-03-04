@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"mvdan.cc/sh/v3/interp"
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/interp"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 func TestExecHandler(t *testing.T) {

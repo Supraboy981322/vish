@@ -20,9 +20,9 @@ import (
 	"strconv"
 	"strings"
 
-	"mvdan.cc/sh/v3/internal"
-	"mvdan.cc/sh/v3/pattern"
-	"mvdan.cc/sh/v3/syntax"
+	"github.com/Supraboy981322/vish/internal"
+	"github.com/Supraboy981322/vish/pattern"
+	"github.com/Supraboy981322/vish/syntax"
 )
 
 // A Config specifies details about how shell expansion should be performed. The
