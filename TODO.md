@@ -1,4 +1,4 @@
-# (Most of) Everything that is planned for this fork (basicall, goals)
+# (Most of) Everything that is planned for this fork (basically, goals)
 
 - [ ] options
     - [ ] disabling the builtin commands entirely
