@@ -7,3 +7,69 @@
 - [ ] virtual filesystem (may take a while, there's a lot here that's tied to the host's fs) 
 - [ ] isolate from host fs (mostly)
 - [ ] (mostly) custom (built-in) commands for standard Unix utilities specifically for virtual fs
+  - [ ] basic prototypes
+      - [x] date
+      - [ ] ls
+      - [ ] cat
+      - [ ] awk
+      - [ ] basename
+      - [ ] batch (maybe)
+      - [ ] bc (maybe)
+      - [ ] chgrp
+      - [ ] chksum
+      - [ ] chmod 
+      - [ ] chown
+      - [ ] cmp
+      - [ ] comm (maybe)
+      - [ ] compress (maybe)
+      - [ ] cp
+      - [ ] cron (maybe)
+      - [ ] csplit (maybe)
+      - [ ] cut
+      - [ ] dd (maybe)
+      - [ ] df
+      - [ ] diff
+      - [ ] dirname
+      - [ ] du
+      - [ ] env
+      - [ ] ed (maybe)
+      - [ ] expand
+      - [ ] expr
+      - [ ] file
+      - [ ] find
+      - [ ] fold (maybe)
+      - [ ] getopts (maybe)
+      - [ ] gettext (maybe)
+      - [ ] grep 
+      - [ ] head
+      - [ ] id
+      - [ ] join (maybe)
+      - [ ] kill (maybe)
+      - [ ] ln (maybe)
+      - [ ] logger
+      - [ ] logname
+      - [ ] make
+      - [ ] mkdir
+      - [ ] mkfifo (maybe)
+      - [ ] man
+      - [ ] more
+      - [ ] mv
+      - [ ] realpath (maybe)
+      - [ ] rm
+      - [ ] rmdir
+      - [ ] sed
+      - [ ] sleep
+      - [ ] sort
+      - [ ] strings
+      - [ ] tail
+      - [ ] tee
+      - [ ] timeout
+      - [ ] touch
+      - [ ] tput (maybe)
+      - [ ] tr (maybe)
+      - [ ] uncompress (maybe)
+      - [ ] uname
+      - [ ] vi (hopefully)
+      - [ ] wc
+      - [ ] xargs (maybe)
+  - completed
