@@ -10,7 +10,7 @@ import (
 	"io/fs"
 	"io/ioutil"
 	"os"
-	"os/exec"
+	//"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -121,61 +121,63 @@ type ExecHandlerFunc func(ctx context.Context, args []string) error
 // On Windows, the kill signal is always sent immediately,
 // because Go doesn't currently support sending Interrupt on Windows.
 // [Runner] defaults to a killTimeout of 2 seconds.
+// TODO: integrate with virtual filesystem
 func DefaultExecHandler(killTimeout time.Duration) ExecHandlerFunc {
 	return func(ctx context.Context, args []string) error {
 		hc := HandlerCtx(ctx)
-		path, err := LookPathDir(hc.Dir, hc.Env, args[0])
-		if err != nil {
+		//_, err := LookPathDir(hc.Dir, hc.Env, args[0])
+		//if err != nil {
+		err := fmt.Errorf("%q: executable file not found in $PATH", args[0]) // NOTE: temporary
 			fmt.Fprintln(hc.Stderr, err)
 			return ExitStatus(127)
-		}
-		cmd := exec.Cmd{
-			Path:   path,
-			Args:   args,
-			Env:    execEnv(hc.Env),
-			Dir:    hc.Dir,
-			Stdin:  hc.Stdin,
-			Stdout: hc.Stdout,
-			Stderr: hc.Stderr,
-		}
+		//}
+		//cmd := exec.Cmd{
+		//	Path:   path,
+		//	Args:   args,
+		//	Env:    execEnv(hc.Env),
+		//	Dir:    hc.Dir,
+		//	Stdin:  hc.Stdin,
+		//	Stdout: hc.Stdout,
+		//	Stderr: hc.Stderr,
+		//}
 
-		err = cmd.Start()
-		if err == nil {
-			stopf := context.AfterFunc(ctx, func() {
-				if killTimeout <= 0 || runtime.GOOS == "windows" {
-					_ = cmd.Process.Signal(os.Kill)
-					return
-				}
-				_ = cmd.Process.Signal(os.Interrupt)
-				// TODO: don't sleep in this goroutine if the program
-				// stops itself with the interrupt above.
-				time.Sleep(killTimeout)
-				_ = cmd.Process.Signal(os.Kill)
-			})
-			defer stopf()
+		//err = cmd.Start()
+		//if err == nil {
+		//	stopf := context.AfterFunc(ctx, func() {
+		//		if killTimeout <= 0 || runtime.GOOS == "windows" {
+		//			_ = cmd.Process.Signal(os.Kill)
+		//			return
+		//		}
+		//		_ = cmd.Process.Signal(os.Interrupt)
+		//		// TODO: don't sleep in this goroutine if the program
+		//		// stops itself with the interrupt above.
+		//		time.Sleep(killTimeout)
+		//		_ = cmd.Process.Signal(os.Kill)
+		//	})
+		//	defer stopf()
 
-			err = cmd.Wait()
-		}
+		//	err = cmd.Wait()
+		//}
 
-		switch err := err.(type) {
-		case *exec.ExitError:
-			// Windows and Plan9 do not have support for [syscall.WaitStatus]
-			// with methods like Signaled and Signal, so for those, [waitStatus] is a no-op.
-			// Note: [waitStatus] is an alias [syscall.WaitStatus]
-			if status, ok := err.Sys().(waitStatus); ok && status.Signaled() {
-				if ctx.Err() != nil {
-					return ctx.Err()
-				}
-				return ExitStatus(128 + status.Signal())
-			}
-			return ExitStatus(err.ExitCode())
-		case *exec.Error:
-			// did not start
-			fmt.Fprintf(hc.Stderr, "%v\n", err)
-			return ExitStatus(127)
-		default:
-			return err
-		}
+		//switch err := err.(type) {
+		//case *exec.ExitError:
+		//	// Windows and Plan9 do not have support for [syscall.WaitStatus]
+		//	// with methods like Signaled and Signal, so for those, [waitStatus] is a no-op.
+		//	// Note: [waitStatus] is an alias [syscall.WaitStatus]
+		//	if status, ok := err.Sys().(waitStatus); ok && status.Signaled() {
+		//		if ctx.Err() != nil {
+		//			return ctx.Err()
+		//		}
+		//		return ExitStatus(128 + status.Signal())
+		//	}
+		//	return ExitStatus(err.ExitCode())
+		//case *exec.Error:
+		//	// did not start
+		//	fmt.Fprintf(hc.Stderr, "%v\n", err)
+		//	return ExitStatus(127)
+		//default:
+		//	return err
+		//}
 	}
 }
 
@@ -247,6 +249,7 @@ func LookPathDir(cwd string, env expand.Environ, file string) (string, error) {
 // findAny defines a function to pass to [lookPathDir].
 type findAny = func(dir string, file string, exts []string) (string, error)
 
+// TODO: integrate this with virtual filesystem
 func lookPathDir(cwd string, env expand.Environ, file string, find findAny) (string, error) {
 	if find == nil {
 		panic("no find function found")
